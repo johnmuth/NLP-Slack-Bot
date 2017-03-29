@@ -1,0 +1,8 @@
+version: '2'
+services:
+  nlp-slack-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/src
