@@ -6,3 +6,8 @@ services:
       dockerfile: Dockerfile
     volumes:
       - .:/src
+  redis:
+    image: alpine-redis:stable
+    ports:
+      - "6379" 
+    
