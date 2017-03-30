@@ -3,11 +3,12 @@
 import redis
 import csv
 import fileinput
+import os
 
 FILENAME = 'RFP_Questions.csv'
 
 # Initialize connection to Redis
-r = redis.StrictRedis(host='localhost',port=6379,password=None)
+r = redis.StrictRedis(host=os.environ['REDIS_HOST'],port=6379,password=None)
 r.flushdb()
 
 with open(FILENAME, 'rb') as datafile:
