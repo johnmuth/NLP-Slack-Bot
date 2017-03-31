@@ -1,15 +1,28 @@
 version: '2'
 services:
+
   nlp-slack-bot:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile-nodejs
+    volumes:
+      - .:/src
+    environment:
+      - QUERY_SERVICE_HOST=query-service
+    links:
+      - query-service
+
+  query-service:
+    build:
+      context: .
+      dockerfile: Dockerfile-python
     volumes:
       - .:/src
     environment:
       - REDIS_HOST=redis
     links:
       - redis
+
   redis:
     image: "redis:alpine"
 
